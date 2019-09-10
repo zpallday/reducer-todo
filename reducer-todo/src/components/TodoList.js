@@ -1,12 +1,19 @@
-import React from 'react';
-import Todo from "./Todo";
+import React from "react";
 
-const TodoList = ({list}) => {
-    return(
-        <div>
-            {list.map(item => <Todo key={item.id} item={item} />)}
+const TodoList = ({ todos, toggleTodo }) => {
+  return (
+    <div className="todo-list">
+      {todos.map(todo => (
+        <div
+          key={todo.id}
+          onClick={() => toggleTodo(todo.id)}
+          className={todo.completed ? "completed" : ""}
+        >
+          {todo.task}
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
 export default TodoList;
